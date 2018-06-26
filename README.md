@@ -3,6 +3,11 @@
 E-mail protector uses base64 encoding to secure raw e-mail address against SPAM bots.
 
 ## How to use
+Downloading with composer
+```
+composer require macsch15/emailprotector
+```
+
 EmailProtector object has 4 methods that you can use.
 
 #### getEncrypted()
