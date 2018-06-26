@@ -22,7 +22,10 @@ class EmailProtector
      */
     private function getRequestMethod() : string
     {
-        return $this->getRequest()->server->get('REQUEST_METHOD') ?? 'GET';
+        return $this
+            ->getRequest()
+            ->server
+            ->get('REQUEST_METHOD') === 'POST' ? 'request' : 'query';
     }
 
     /**
@@ -32,9 +35,10 @@ class EmailProtector
      */
     private function getEmail() : ?string
     {
-        $type = $this->getRequestMethod() === 'POST' ? 'request' : 'query';
-
-        return $this->getRequest()->{$type}->filter('email', null, FILTER_VALIDATE_EMAIL) ?: null;
+        return $this
+            ->getRequest()
+            ->{$this->getRequestMethod()}
+            ->filter('email', null, FILTER_VALIDATE_EMAIL) ?: null;
     }
 
     /**
@@ -44,9 +48,10 @@ class EmailProtector
      */
     private function getTitle() : ?string
     {
-        $type = $this->getRequestMethod() === 'POST' ? 'request' : 'query';
-
-        return $this->getRequest()->{$type}->get('title') ?: null;
+        return $this
+            ->getRequest()
+            ->{$this->getRequestMethod()}
+            ->get('title') ?: null;
     }
 
     /**
