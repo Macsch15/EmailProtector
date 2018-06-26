@@ -1,8 +1,24 @@
 {
-    "autoload": {
-        "psr-4": {"EmailProtector\\": "src/"}
+    "name": "macsch15/emailprotector",
+    "type": "library",
+    "description": "Secure e-mail addresses against SPAM bots",
+    "keywords": ["email", "spam-protection", "antispam"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Maciej Schmidt"
+        }
+    ],
+
+    "require": {
+        "php": ">=7.0"
     },
+
     "require": {
         "symfony/http-foundation": "^4.1"
+    },
+
+    "autoload": {
+        "psr-4": {"EmailProtector\\": "src/"}
     }
 }
