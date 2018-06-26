@@ -1,0 +1,8 @@
+{
+    "autoload": {
+        "psr-4": {"EmailProtector\\": "src/"}
+    },
+    "require": {
+        "symfony/http-foundation": "^4.1"
+    }
+}

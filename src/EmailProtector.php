@@ -1,0 +1,113 @@
+<?php
+namespace EmailProtector;
+
+use Symfony\Component\HttpFoundation\Request;
+
+class EmailProtector
+{
+    /**
+     * Get Request Object
+     *
+     * @return \Symfony\Component\HttpFoundation\Request
+     */
+    private function getRequest() : Request
+    {
+        return Request::createFromGlobals();
+    }
+
+    /**
+     * Get request method
+     *
+     * @return string
+     */
+    private function getRequestMethod() : string
+    {
+        return $this->getRequest()->server->get('REQUEST_METHOD') ?? 'GET';
+    }
+
+    /**
+     * Get Email from request
+     *
+     * @return string
+     */
+    private function getEmail() : ?string
+    {
+        $type = $this->getRequestMethod() === 'POST' ? 'request' : 'query';
+
+        return $this->getRequest()->{$type}->filter('email', null, FILTER_VALIDATE_EMAIL) ?: null;
+    }
+
+    /**
+     * Get Title from request
+     *
+     * @return string
+     */
+    private function getTitle() : ?string
+    {
+        $type = $this->getRequestMethod() === 'POST' ? 'request' : 'query';
+
+        return $this->getRequest()->{$type}->get('title') ?: null;
+    }
+
+    /**
+     * Add link to email
+     *
+     * @param string $title
+     * @return string
+     */
+    private function makeUrl(string $title) : string
+    {
+        return sprintf('<a href="mailto:%s">%s</a>', $this->getEmail(), $title);
+    }
+
+    /**
+     * Encrypt email and title (if exists)
+     *
+     * @return string
+     */
+    public function getEncrypted() : string
+    {
+        $encrypt = $this->getEmail();
+
+        if ($this->getTitle() !== null) {
+            $encrypt = $this->makeUrl($this->getTitle());
+        }
+
+        return base64_encode($encrypt) ?: 'email@example.com';
+    }
+
+    /**
+     * Output HTML code
+     *
+     * @return string
+     */
+    public function outputHtml() : string
+    {
+        return htmlspecialchars(
+            sprintf('<script>document.write(atob("%s"));</script>', $this->getEncrypted())
+        );
+    }
+
+    /**
+     * Output HTML code unescaped
+     *
+     * @return string
+     */
+    public function outputHtmlRaw() : string
+    {
+        return sprintf('<script>document.write(atob("%s"));</script>', $this->getEncrypted());
+    }
+
+    /**
+     * Output as jQuery
+     *
+     * @param string $element 
+     * @return string
+     */
+    public function outputJquery(string $element) : string
+    {
+        return htmlspecialchars(
+            sprintf('<script>$(\'%s\').append(atob("%s"));</script>', $element, $this->getEncrypted())
+        );
+    }
+}
