@@ -73,6 +73,12 @@ Example result:
 ## Requirements
 - PHP >= 7.1
 
+## Author
+**Maciej Schmidt**
+- [Homepage](http://www.macsch15.pl/ "Homepage")
+- [Twitter](https://twitter.com/Macsch15 "Twitter")
+- [Donate with PayPal](https://www.paypal.me/MaciejSchmidt "Donate with PayPal")
+
 ## MIT Licence
 
 Copyright (c) 2018 Maciej Schmidt
