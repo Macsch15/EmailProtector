@@ -10,7 +10,7 @@ class EmailProtector
      *
      * @return \Symfony\Component\HttpFoundation\Request
      */
-    private function getRequest() : Request
+    private function getRequest(): Request
     {
         return Request::createFromGlobals();
     }
@@ -20,7 +20,7 @@ class EmailProtector
      *
      * @return string
      */
-    private function getRequestMethod() : string
+    private function getRequestMethod(): string
     {
         return $this
             ->getRequest()
@@ -33,7 +33,7 @@ class EmailProtector
      *
      * @return string
      */
-    private function getEmail() : ?string
+    private function getEmail(): ?string
     {
         return $this
             ->getRequest()
@@ -46,7 +46,7 @@ class EmailProtector
      *
      * @return string
      */
-    private function getTitle() : ?string
+    private function getTitle(): ?string
     {
         return $this
             ->getRequest()
@@ -60,7 +60,7 @@ class EmailProtector
      * @param string $title
      * @return string
      */
-    private function makeUrl(string $title) : string
+    private function makeUrl(string $title): string
     {
         return sprintf('<a href="mailto:%s">%s</a>', $this->getEmail(), $title);
     }
@@ -70,7 +70,7 @@ class EmailProtector
      *
      * @return string
      */
-    public function getEncrypted() : string
+    public function getEncrypted(): string
     {
         $encrypt = $this->getEmail();
 
@@ -86,7 +86,7 @@ class EmailProtector
      *
      * @return string
      */
-    public function outputHtml() : string
+    public function outputHtml(): string
     {
         return htmlspecialchars(
             sprintf('<script>document.write(atob("%s"));</script>', $this->getEncrypted())
@@ -98,7 +98,7 @@ class EmailProtector
      *
      * @return string
      */
-    public function outputHtmlRaw() : string
+    public function outputHtmlRaw(): string
     {
         return sprintf('<script>document.write(atob("%s"));</script>', $this->getEncrypted());
     }
@@ -109,7 +109,7 @@ class EmailProtector
      * @param string $element 
      * @return string
      */
-    public function outputJquery(string $element) : string
+    public function outputJquery(string $element): string
     {
         return htmlspecialchars(
             sprintf('<script>$(\'%s\').append(atob("%s"));</script>', $element, $this->getEncrypted())
