@@ -1,4 +1,4 @@
-## E-mail Protector
+## E-mail Protector [![Build Status](https://travis-ci.org/Macsch15/EmailProtector.svg?branch=master)](https://travis-ci.org/Macsch15/EmailProtector)
 
 E-mail protector uses base64 encoding to secure raw e-mail address against SPAM bots.
 
