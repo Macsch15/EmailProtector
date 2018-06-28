@@ -8,6 +8,11 @@ Downloading with composer
 composer require macsch15/emailprotector
 ```
 
+Install dependencies
+```
+composer install
+```
+
 EmailProtector object has 4 methods that you can use.
 
 #### getEncrypted()
