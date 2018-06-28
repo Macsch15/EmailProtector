@@ -72,13 +72,13 @@ class EmailProtector
      */
     public function getEncrypted(): string
     {
-        $encrypt = $this->getEmail();
+        $emailRaw = $this->getEmail();
 
         if ($this->getTitle() !== null) {
-            $encrypt = $this->makeUrl($this->getTitle());
+            $emailRaw = $this->makeUrl($this->getTitle());
         }
 
-        return base64_encode($encrypt) ?: 'email@example.com';
+        return base64_encode($emailRaw) ?: 'email@example.com';
     }
 
     /**
