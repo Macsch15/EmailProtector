@@ -2,6 +2,10 @@
 
 E-mail protector uses base64 encoding to secure raw e-mail address against SPAM bots.
 
+![zrzut ekranu 2018-06-30 o 01 44 24](https://user-images.githubusercontent.com/1592053/42124864-9c358f76-7c62-11e8-9de3-e9bbb03cb583.png)
+
+![zrzut ekranu 2018-06-30 o 01 45 07](https://user-images.githubusercontent.com/1592053/42124869-aec443f8-7c62-11e8-9517-a625f9a0dcf2.png)
+
 ## How to use
 Downloading with composer
 ```
