@@ -1,4 +1,5 @@
 <?php
+
 namespace EmailProtector;
 
 use Symfony\Component\HttpFoundation\Request;
@@ -6,7 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 class EmailProtector
 {
     /**
-     * Get Request Object
+     * Get Request Object.
      *
      * @return \Symfony\Component\HttpFoundation\Request
      */
@@ -16,7 +17,7 @@ class EmailProtector
     }
 
     /**
-     * Get request method
+     * Get request method.
      *
      * @return string
      */
@@ -29,7 +30,7 @@ class EmailProtector
     }
 
     /**
-     * Get Email from request
+     * Get Email from request.
      *
      * @return string
      */
@@ -42,7 +43,7 @@ class EmailProtector
     }
 
     /**
-     * Get Title from request
+     * Get Title from request.
      *
      * @return string
      */
@@ -55,9 +56,10 @@ class EmailProtector
     }
 
     /**
-     * Add link to email
+     * Add link to email.
      *
      * @param string $title
+     *
      * @return string
      */
     private function makeUrl(string $title): string
@@ -66,7 +68,7 @@ class EmailProtector
     }
 
     /**
-     * Encrypt email and title (if exists)
+     * Encrypt email and title (if exists).
      *
      * @return string
      */
@@ -82,7 +84,7 @@ class EmailProtector
     }
 
     /**
-     * Output HTML code
+     * Output HTML code.
      *
      * @return string
      */
@@ -94,7 +96,7 @@ class EmailProtector
     }
 
     /**
-     * Output HTML code unescaped
+     * Output HTML code unescaped.
      *
      * @return string
      */
@@ -104,9 +106,10 @@ class EmailProtector
     }
 
     /**
-     * Output as jQuery
+     * Output as jQuery.
      *
-     * @param string $element 
+     * @param string $element
+     *
      * @return string
      */
     public function outputJquery(string $element): string
