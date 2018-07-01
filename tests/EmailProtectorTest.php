@@ -1,4 +1,5 @@
 <?php
+
 namespace EmailProtector\Tests;
 
 use EmailProtector\EmailProtector;
