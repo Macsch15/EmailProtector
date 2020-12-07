@@ -10,7 +10,7 @@ class EmailProtectorTest extends TestCase
 {
     protected $protector;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->protector = new EmailProtector();
     }
